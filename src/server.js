@@ -1,0 +1,17 @@
+require("dotenv").config() //.env (texto plano con claves)
+require("./config/env") //valida variables antes de iniciar la app
+
+const app = require('./app')
+const db = require('./config/db')
+
+const port = process.env.PORT || 3000
+
+//APP Empresa X
+//2 Base de datos
+// BD Produccion
+// BD Desarrollo
+db.raw('select 1')
+  .then(() => app.listen(port,
+    () => console.log(`Servidor iniciado en http://localhost:${port}`)
+  ))
+  .catch((e) => console.error(`no se pudo realizar la conexion: ${e.message}`))
