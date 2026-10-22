@@ -9,7 +9,7 @@
     "migrate":"knex migrate:latest",
     "migrate:roolback":"knex migrate:rollback --all",
     "seed": "knex seed:run",
-    "db:reset":"knex migrate:rollback -all && knex migrate:latest && knex seed:run"
+    "db:reset": "knex migrate:rollback --all && knex migrate:latest && knex seed:run"
   },
   "keywords": [],
   "author": "",
