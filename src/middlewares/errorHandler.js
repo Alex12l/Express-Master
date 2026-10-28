@@ -1,28 +1,30 @@
-//Gestor de manejo de errores
+// Gestor de manejo de errores
 exports.notFound = (req, res) => {
-  res.status(404).json({ message: 'Ruta no encontrada'})
-}
+  res.status(404).json({ message: 'Ruta no encontrada' });
+};
 
 exports.errorHandler = (err, req, res, next) => {
-  //Si existe un error ... detenemos y retornamos un mensaje de  formato JSON
-  if (err.status) {return res.status(err.status).json({message: err.message})}
-}
+  // 1. Si el error trae un status personalizado
+  if (err.status) {
+    return res.status(err.status).json({ message: err.message });
+  }
 
-//mismo valor , mismo tipo ===
-//Error de duplicidad
-if(err.code === 'ER_DRUP_ENTRY'){
-  return res.status(409).json({message: 'Ya existe un registro con ese valor'})
-}
+  // 2. Error de duplicidad en MySQL
+  if (err.code === 'ER_DUP_ENTRY') {
+    return res.status(409).json({ message: 'Ya existe un registro con ese valor' });
+  }
 
-if(err.code === 'ER_ROW_IS_REFERENCED_2'){
-  return res.status(410).json({message: 'No se puede eliminar, registro en uso'})
+  // 3. Error de llave foránea: registro en uso (no se puede eliminar)
+  if (err.code === 'ER_ROW_IS_REFERENCED_2') {
+    return res.status(410).json({ message: 'No se puede eliminar, registro en uso' });
+  }
 
-}
+  // 4. Error de llave foránea: el ID indicado no existe
+  if (err.code === 'ER_NO_REFERENCED_2') {
+    return res.status(400).json({ message: 'No existe el registro indicado' });
+  }
 
-//Error de id no existe
-if (err.code === 'ER_NO_REFERENCED_2'){
-  return res.status(400).json({message: 'No existe el registro indicado'})
-}
-
-//test
-console.error(err)
+  // 5. Error por defecto (Cualquier otro error inesperado)
+  console.error(err);
+  return res.status(500).json({ message: 'Error interno del servidor' });
+};

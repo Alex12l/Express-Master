@@ -11,7 +11,7 @@ exports.loginLimiter = rateLimit({
 exports.loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   limit: 10,
-  standarHeaders: true,
+  standardHeaders: true,
   legacyHeaders: false,
   message: { message: 'Demasiados intentos, verifique en unos minutos'}
 })
@@ -20,7 +20,7 @@ exports.loginLimiter = rateLimit({
 exports.apiLimiter = rateLimit({
   windowMs: 60 * 1000,
   limit: 120,
-  standarHeaders: true,
+  standardHeaders: true,
   legacyHeaders: false,
   message: { message: 'Demasiadas solicitudes, intente en un momento'}
 })

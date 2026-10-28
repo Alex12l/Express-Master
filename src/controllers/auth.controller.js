@@ -44,7 +44,7 @@ exports.login = async (req, res) => {
     nombre_usuario : user.nombre_usuario,
     nivel_acceso : user.nivel_acceso
   }, process.env.JWT_SECRET, {
-    algoritmo: 'HS256',
+    algorithm: 'HS256',
     expiresIn : process.env.JWR_EXPIRES_IN || '8H'
   })
 
