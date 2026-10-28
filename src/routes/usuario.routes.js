@@ -1,0 +1,10 @@
+const router = require('express').Router()
+const c = require('../controllers/usuario.controller')
+
+router.get('/',c.list)
+router.get('/:id', c.get)
+router.post('/', c.created)
+router.put('/',c.update)
+router.delete('/', c.remove)
+
+module.exports = router
