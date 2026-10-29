@@ -138,28 +138,61 @@
         <form action="" id="formPersona">
           <div class="form-field">
             <label for="apellidos" class="form-label">Apellidos</label>
-            <input type="text" id="apellidos" class="form-control" required>
+            <input
+              type="text"
+              id="apellidos"
+              name="apellidos"
+              class="form-control"
+              required
+            />
           </div>
 
           <div class="form-field mt-3">
             <label for="nombres" class="form-label">Nombres</label>
-            <input type="text" id="nombres" class="form-control" required>
+            <input
+              type="text"
+              id="nombres"
+              name="nombres"
+              class="form-control"
+              required
+            />
           </div>
 
           <div class="form-field mt-3">
             <label for="telefono" class="form-label">Telefono</label>
-            <input type="tel" id="telefono" class="form-control" maxlength="9" pattern="\d+">
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              class="form-control"
+              maxlength="9"
+              pattern="\d+"
+            />
           </div>
 
           <div class="form-field mt-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" id="email" class="form-control" required>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-control"
+              required
+            />
           </div>
 
           <div class="form-field mt-3">
             <label for="direccion" class="form-label">Direccion</label>
-            <input type="text" id="direccion" class="form-control" required>
+            <input
+              type="text"
+              id="direccion"
+              name="direccion"
+              class="form-control"
+              required
+            />
           </div>
+
+          <p class="text-danger" id="errorPersona"></p>
         </form>
       </div>
       <div class="dialog-footer">
@@ -170,7 +203,11 @@
         >
           Cerrar
         </button>
-        <button type="submit" class="btn-solid theme-primary" form="formPersona">
+        <button
+          type="submit"
+          class="btn-solid theme-primary"
+          form="formPersona"
+        >
           Guardar
         </button>
       </div>

@@ -10,7 +10,7 @@ const camposRequeridos = ['apellidos', 'nombres', 'telefono', 'email', 'direccio
 //filter() : retorna un arreglo que cumpla una condicion
 //map()   : recorre toda la estructura / objeto
 const pick = (body) => {
-  Object.fromEntries(
+  return Object.fromEntries(
     camposRequeridos.filter( (key) => key in body).map(
       (key) => [key, typeof body[key] === 'string' ? body[key].trim() : body[key]]
     )
@@ -42,7 +42,8 @@ exports.created = async (req, res) => {
   }
 
   //Insertar (validando que solo envies cadenas)
-  const [id] = await db("personas").insert(pick(req.body))
+ // const [id] = await db("personas").insert(pick(req.body))
+  const [id] = await db("personas").insert(req.body)
   res.status(201).json({id, message: 'persona registrada'})
 }
 
@@ -57,14 +58,15 @@ exports.update = async (req, res) => {
   }
 
   //Actualizando
-  await db("personas")
+  const num = await db("personas")
   .where({id: req.params.id})
-  .update(pick(req.body))
+  .update(req.body)
 
   if(!num) throw httpError(404,"Persona no encontrada")
     res.json({message: "Persona Actualizada"})
 }
 
+//Eliminar
 exports.remove = async (req, res) => {
   const num = await db("personas")
   .where({id:req.params.id})

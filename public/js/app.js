@@ -132,6 +132,32 @@ function abrirFormularioPersonas(persona){
   document.getElementById("dialogPersona").showModal()
 }
 
+//Se ejecutara desde el submit, requerimos el event para detenerlo
+async function guardarPersona(event){
+  event.preventDefault()
+
+  //Empaquetar todos los datos que enviaremos
+  const datos = {
+    apellidos: document.getElementById('apellidos').value,
+    nombres: document.getElementById('nombres').value,
+    telefono: document.getElementById('telefono').value,
+    email: document.getElementById('email').value,
+    direccion: document.getElementById('direccion').value
+  }
+  try{
+    if(idPersonaEditando){
+      await llamarApi(`/api/personas/${idPersonaEditando}`,'PUT',datos)
+    }else{
+      await llamarApi('/api/personas/','POST',datos)
+    }
+    document.getElementById('dialogPersona').close() //Cerrar dialogo
+    await cargarPersonas() //Se renderiza en cuerpo de la tabla
+  }catch(e){
+    //Notificar el error en el mismo formulario (evitar demasiadas alertas en pantalla)
+    document.getElementById('errorPersona').textContent = e.message
+  }
+}
+
 async function eliminarPersona(id){
   if (!confirm("¿Eliminamos esta persona?")){
     return;
@@ -146,5 +172,6 @@ async function eliminarPersona(id){
 //Manejadores de eventos
 document.getElementById("logout").addEventListener("click", cerrarSesion)
 document.getElementById("nuevaPersona").addEventListener("click", function(){ abrirFormularioPersonas(null)})
+document.getElementById("formPersona").addEventListener("submit", guardarPersona)
 
 iniciar()
