@@ -1,35 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <h1>WELCOME</h1>
-  <h2 id="who"></h2> <button type="button" id="logout">Cerrar Sesion</button>
-  <hr>
-  
-  <section id="seccionPersonas">
-    <div>
-      <h2>Personas</h2>
-      <button type="button" id="nuevaPersona">Nueva Persona</button>
-    </div>
-    <table border="1">
-      <thead>
-        <tr>
-          <th>Apellidos</th>
-          <th>Nombres</th>
-          <th>Telefono</th>
-          <th>Email</th>
-          <th>Dreccion</th>
-        </tr>
-      </thead>
-      <tbody id="cuerpoPersonas"></tbody>
-    </table>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
 
-  </section>
+    <!--BOOSTRAP 6 - ALPHA-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe"
+      crossorigin="anonymous"
+    />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1>WELCOME</h1>
+    <h2 id="who"></h2>
+    <button type="button" id="logout">Cerrar Sesion</button>
+    <hr />
 
-  <script src="./js/app.js"></script>
-</body>
+    <section id="seccionPersonas">
+      <div>
+        <h2>Personas</h2>
+        <button type="button" id="nuevaPersona">Nueva Persona</button>
+      </div>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Apellidos</th>
+            <th>Nombres</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>Dreccion</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpoPersonas"></tbody>
+      </table>
+    </section>
+
+    <script src="./js/app.js"></script>
+  </body>
 </html>

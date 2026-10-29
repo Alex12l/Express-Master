@@ -7,6 +7,6 @@ router.get('/',c.list)
 router.get('/:id', c.get)
 router.post('/', c.created)
 router.put('/',c.update)
-router.delete('/', c.remove)
+router.delete('/:id', c.remove)
 
 module.exports = router

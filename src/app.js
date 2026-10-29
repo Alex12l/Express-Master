@@ -26,7 +26,10 @@ if(process.env.TRUST_PROXY) app.set('trust proxy', Number(process.env.TRUST_PROX
     contentSecurityPolicy: {
       useDefaults: true,
       directives:{
-        'style-src':["'self'"],
+        'defaultSrc': ["'self'"],
+        'scriptSrc': ["'self'", "https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/"],
+        'styleSrc': ["'self'","https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/"],
+        'connectSrc': ["'self'", "https://cdn.jsdelivr.net"],
         'upgrade-insecure-requests': isProd ? []:null
       }
     }
