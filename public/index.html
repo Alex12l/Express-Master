@@ -20,29 +20,162 @@
     ></script>
   </head>
   <body>
-    <h1>WELCOME</h1>
-    <h2 id="who"></h2>
-    <button type="button" id="logout">Cerrar Sesion</button>
-    <hr />
+    <nav class="navbar md:navbar-expand bg-1">
+      <div class="container">
+        <h2 class="navbar-brand" href="#" id="who"></h2>
+        <button
+          class="btn-icon navbar-toggler"
+          type="button"
+          data-bs-toggle="drawer"
+          data-bs-target="#navbarDrawer"
+          aria-controls="navbarDrawer"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon" aria-hidden="true"></span>
+        </button>
+        <dialog
+          class="drawer drawer-end"
+          tabindex="-1"
+          id="navbarDrawer"
+          aria-labelledby="navbarDrawerLabel"
+        >
+          <div class="drawer-header">
+            <h5 class="drawer-title" id="navbarDrawerLabel">Menu</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="drawer"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="drawer-body mb-2 md:mb-0">
+            <ul class="nav navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <button
+                  class="nav-link"
+                  type="button"
+                  data-bs-toggle="menu"
+                  aria-expanded="false"
+                >
+                  Menu
+                </button>
+                <div class="menu">
+                  <a class="menu-item" href="#">Action</a>
+                  <a class="menu-item" href="#">Another action</a>
+                  <hr class="menu-divider" />
+                  <a class="menu-item" href="#">Something else here</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+            <form class="hstack gap-2" role="search">
+              <input
+                class="form-control"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-secondary" type="button" id="logout">
+                Cerrar Sesion
+              </button>
+            </form>
+          </div>
+        </dialog>
+      </div>
+    </nav>
 
     <section id="seccionPersonas">
-      <div>
-        <h2>Personas</h2>
-        <button type="button" id="nuevaPersona">Nueva Persona</button>
+      <div class="container my-4">
+        <div>
+          <h2>Personas</h2>
+          <button
+            class="btn-solid theme-primary"
+            type="button"
+            id="nuevaPersona"
+          >
+            Nueva Persona
+          </button>
+        </div>
+
+        <table class="table table-hover">
+          <thead class="theme-info">
+            <tr>
+              <th>Apellidos</th>
+              <th>Nombres</th>
+              <th>Telefono</th>
+              <th>Email</th>
+              <th>Dreccion</th>
+              <th>Metodos</th>
+            </tr>
+          </thead>
+          <tbody id="cuerpoPersonas"></tbody>
+        </table>
       </div>
-      <table border="1">
-        <thead>
-          <tr>
-            <th>Apellidos</th>
-            <th>Nombres</th>
-            <th>Telefono</th>
-            <th>Email</th>
-            <th>Dreccion</th>
-          </tr>
-        </thead>
-        <tbody id="cuerpoPersonas"></tbody>
-      </table>
     </section>
+
+    <!--Zona de Modales-->
+
+    <dialog class="dialog" id="dialogPersona">
+      <div class="dialog-header">
+        <h1 class="dialog-title">Personas</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="dialog"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="dialog-body">
+        <form action="" id="formPersona">
+          <div class="form-field">
+            <label for="apellidos" class="form-label">Apellidos</label>
+            <input type="text" id="apellidos" class="form-control" required>
+          </div>
+
+          <div class="form-field mt-3">
+            <label for="nombres" class="form-label">Nombres</label>
+            <input type="text" id="nombres" class="form-control" required>
+          </div>
+
+          <div class="form-field mt-3">
+            <label for="telefono" class="form-label">Telefono</label>
+            <input type="tel" id="telefono" class="form-control" maxlength="9" pattern="\d+">
+          </div>
+
+          <div class="form-field mt-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" class="form-control" required>
+          </div>
+
+          <div class="form-field mt-3">
+            <label for="direccion" class="form-label">Direccion</label>
+            <input type="text" id="direccion" class="form-control" required>
+          </div>
+        </form>
+      </div>
+      <div class="dialog-footer">
+        <button
+          type="button"
+          class="btn-solid theme-secondary"
+          data-bs-dismiss="dialog"
+        >
+          Cerrar
+        </button>
+        <button type="submit" class="btn-solid theme-primary" form="formPersona">
+          Guardar
+        </button>
+      </div>
+    </dialog>
+    <!--Fin Zona de Modales-->
 
     <script src="./js/app.js"></script>
   </body>
